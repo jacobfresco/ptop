@@ -1,0 +1,25 @@
+{
+    "server": {
+        "prtg_host": "https://monitor.wizzbit.com",
+        "prtg_port": "443"
+    },
+
+    "layout": {
+
+    },
+
+    "theme": {
+        "background": "#000000",
+        "font_normal": "#FFFFFF",
+        "font_pop": "#b8252d",
+        "font_dark": "",
+        "font_extra": "",
+        "font_extra2": "",
+        "topbar_background": "",
+        "topbar_font": "",
+        "alert_background": "",
+        "alert_font": "",
+        "warning_background": "",
+        "warning_font": ""
+    }
+}
