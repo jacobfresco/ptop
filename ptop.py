@@ -3,6 +3,7 @@ import time
 import random
 
 from function import *
+from theme import *
 
 # Constants to define the placeholder values
 CPU_BARS = 10
@@ -12,6 +13,8 @@ NUM_PROCESSES = 10
 
 def main(stdscr):
     curses.curs_set(0)  # Hide the cursor
+    curses.start_color() # Use colours
+    curses.use_default_colors() # Use default terminal colors
     stdscr.nodelay(1)   # Don't block waiting for user input
     stdscr.timeout(500) # Refresh every 500 ms
 
@@ -20,9 +23,9 @@ def main(stdscr):
         h, w = stdscr.getmaxyx()
 
         # Draw CPU, Memory, and Swap Usage
-        draw_bars(stdscr, 1, 1, "CPU", CPU_BARS, 100, random.randint(0, 100))
-        draw_bars(stdscr, 2, 1, "Mem", MEM_BARS, 16000, random.randint(0, 16000))
-        draw_bars(stdscr, 3, 1, "Swp", SWAP_BARS, 8000, random.randint(0, 8000))
+        draw_bars(stdscr, 1, 1, "1", 32, 100, 100)
+        draw_bars(stdscr, 2, 1, "Mem", 32, 16000, random.randint(0, 16000))
+        draw_bars(stdscr, 3, 1, "Swp", 32, 8000, random.randint(0, 8000))
 
         # Draw Process List Header
         draw_processes(stdscr, 5, 1, NUM_PROCESSES)

@@ -1,0 +1,13 @@
+{
+    "server": {
+        "prtg_host": "yourserverurl",
+        "prtg_port": "443",
+        "api_user": "yourprtgapiuser",
+        "api_password": "passwordforapiuser"
+    },
+
+    "layout": {
+
+    }
+    
+}

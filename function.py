@@ -4,7 +4,7 @@ import random
 
 def draw_bars(stdscr, y, x, label, width, max_value, current_value):
     bar_length = int((current_value / max_value) * width)
-    stdscr.addstr(y, x, f"{label}: |" + "#" * bar_length + "-" * (width - bar_length) + "|")
+    stdscr.addstr(y, x, f"{label}: [" + "#" * bar_length + "-" * (width - bar_length) + "]")
 
 def draw_processes(stdscr, y, x, num_processes):
     stdscr.addstr(y, x, "PID   USER     PRI  NI  VIRT   RES   SHR S %CPU %MEM   TIME+  COMMAND")
