@@ -9,19 +9,23 @@ def main(stdscr):
     curses.curs_set(0)  # Hide the cursor
     stdscr.nodelay(1)   # Don't block waiting for user input
     stdscr.timeout(500) # Refresh every 500 ms
-    # theme_set_colours()
+    theme_set_colours()
 
     while True:
         stdscr.clear()
         h, w = stdscr.getmaxyx()
+        draw_header(stdscr, 1, 1, "ptop - Monitor PRTG from your terminal", w)
 
-        # Draw CPU, Memory, and Swap Usage
-        draw_bars(stdscr, 1, 1, "1", 32, 100, 100)
-        draw_bars(stdscr, 2, 1, "Mem", 32, 16000, random.randint(0, 16000))
-        draw_bars(stdscr, 3, 1, "Swp", 32, 8000, random.randint(0, 8000))
+        # Draw standard information
+        draw_bars(stdscr, 3, 3, "1", 32, 100, 100)
+        draw_bars(stdscr, 4, 3, "Mem", 32, 16000, random.randint(0, 16000))
+        draw_bars(stdscr, 5, 3, "Swp", 32, 8000, random.randint(0, 8000))
+
+        draw_sensor(stdscr, 3, 50, "Alerts", "6", 3)
+
 
         # Draw Process List Header
-        draw_processes(stdscr, 5, 1, 30)
+        draw_processes(stdscr, 7, 1, 30)
 
         # Handle exit key (q)
         key = stdscr.getch()
