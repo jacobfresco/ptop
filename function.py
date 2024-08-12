@@ -4,6 +4,27 @@ import random
 
 from theme import *
 
+def fetch_json(url, output_file):
+    try:
+        # Fetch the data from the URL
+        response = requests.get(url)
+        response.raise_for_status()  # Check for HTTP errors
+
+        # Parse the JSON content
+        data = response.json()
+
+        # Save the JSON data to a file
+        with open(output_file, 'w') as file:
+            json.dump(data, file, indent=4)
+
+        print(f"JSON data has been saved to {output_file}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching data: {e}")
+
+    except json.JSONDecodeError:
+        print("Error decoding JSON response")
+
 def check_filedir(dir):
     # Check if the configured directory for the cached files exists. 
     h, w = stdscr.getmaxyx()
