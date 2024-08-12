@@ -3,11 +3,22 @@ import time
 import random
 import requests
 import json
+import os
 
 from function import *
 from theme import *
 
+global prtg_url 
+global prtg_url 
+global prtg_url 
+
+global file_dir 
+global alert_file 
+global warning_file
+global ack_file
+
 read_settings("settings.json")
+check_filedir("~/.cache/ptop/")
 
 def main(stdscr):
     curses.curs_set(0)  # Hide the cursor

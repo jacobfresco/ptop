@@ -3,6 +3,7 @@ import time
 import random
 import requests
 import json
+import os
 
 from theme import *
 
@@ -33,6 +34,12 @@ def read_settings(settings_file):
         prtg_url = {server.get('prtg_host')} + ":" + {server.get('prtg_port')} + {server.get('fetch_url')}
         prtg_url = prtg_url.replace("$user", {server.get('api_user')})
         prtg_url = prtg_url.replace("$pwd", {server.get('api_password')})
+
+        file_dir = {ptop_mode.get('file_dir')}
+        alert_file = {ptop_mode.get('alert_file')}
+        warning_file = {ptop_mode.get('warnings_file')}
+        ack_file = {ptop_mode.get('ack_file')}
+
 
         
         # Use the settings in your application
@@ -65,7 +72,7 @@ def fetch_json(url, output_file):
         print("Error decoding JSON response")
 
 
-def check_filedir(dir):
+def check_filedir(directory_path):
     if os.path.exists(directory_path):
         print(f"The directory '{directory_path}' already exists.")
     else:
@@ -80,6 +87,7 @@ def check_filedir(dir):
                 print(f"An error occurred while creating the directory: {e}")
         else:
             print("Directory was not created.")
+            quit()
 
 def draw_header(stdscr, y, x, label, width):
     stdscr.addstr(y, x, " " + f"{label}" + " " * ((width - len(label))-2), curses.color_pair(11))
