@@ -21,23 +21,28 @@ def read_settings(settings_file):
         print(f"Error: The file {settings_file} contains invalid JSON.")
         return None
 
-# Load settings
-settings = load_settings(settings_file)
+    # Load settings
+    settings = load_settings(settings_file)
 
-if settings:
-    # Accessing individual settings
-    server = settings.get("server", {})
-    status = settings.get("status", {})
-    ptop_mode = settings.get("ptop_mode", {})
-    
-    # Use the settings in your application
-    if debug_mode:
-        print("Debug mode is enabled.")
+    if settings:
+        # Accessing individual settings
+        server = settings.get("server", {})
+        status = settings.get("status", {})
+        ptop_mode = settings.get("ptop_mode", {})
+
+        prtg_url = {server.get('prtg_host')} + ":" + {server.get('prtg_port')} + {server.get('fetch_url')}
+        prtg_url = prtg_url.replace("$user", {server.get('api_user')})
+        prtg_url = prtg_url.replace("$pwd", {server.get('api_password')})
+
+        
+        # Use the settings in your application
+        if debug_mode:
+            print("Debug mode is enabled.")
+        else:
+            print("Debug mode is disabled.")
+
     else:
-        print("Debug mode is disabled.")
-
-else:
-    print("Failed to load settings.")
+        print("Failed to load settings.")
 
 def fetch_json(url, output_file):
     try:
@@ -61,7 +66,7 @@ def fetch_json(url, output_file):
 
 
 def check_filedir(dir):
-    # Check if the configured directory for the cached files exists. 
+    
     h, w = stdscr.getmaxyx()
 
 def draw_header(stdscr, y, x, label, width):

@@ -7,6 +7,8 @@ import json
 from function import *
 from theme import *
 
+read_settings("settings.json")
+
 def main(stdscr):
     curses.curs_set(0)  # Hide the cursor
     stdscr.nodelay(1)   # Don't block waiting for user input
