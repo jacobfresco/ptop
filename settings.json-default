@@ -14,7 +14,7 @@
     },
 
     "ptop_mode": {
-        "mode": "cached",
+        "mode": "cached", 
         "file_dir": "~/.cache/ptop/",
         "alert_file": "alerts.json",
         "warnings_file": "warnings.json",
