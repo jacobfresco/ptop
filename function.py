@@ -66,8 +66,20 @@ def fetch_json(url, output_file):
 
 
 def check_filedir(dir):
-    
-    h, w = stdscr.getmaxyx()
+    if os.path.exists(directory_path):
+        print(f"The directory '{directory_path}' already exists.")
+    else:
+        print(f"The directory '{directory_path}' does not exist.")
+        # Ask the user if they want to create the directory
+        create_dir = input("Would you like to create it? (y/n): ").strip().lower()
+        if create_dir == 'y':
+            try:
+                os.makedirs(directory_path)
+                print(f"The directory '{directory_path}' has been created successfully.")
+            except Exception as e:
+                print(f"An error occurred while creating the directory: {e}")
+        else:
+            print("Directory was not created.")
 
 def draw_header(stdscr, y, x, label, width):
     stdscr.addstr(y, x, " " + f"{label}" + " " * ((width - len(label))-2), curses.color_pair(11))
