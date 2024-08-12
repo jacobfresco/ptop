@@ -3,8 +3,22 @@ import time
 import random
 
 from theme import *
+
 def draw_header(stdscr, y, x, label, width):
     stdscr.addstr(y, x, " " + f"{label}" + " " * ((width - len(label))-2), curses.color_pair(11))
+
+def draw_footer(stdscr):
+    h, w = stdscr.getmaxyx()
+   
+    stdscr.addstr(h-1, 1, f"F1", curses.color_pair(8))
+    stdscr.addstr(h-1, 3, f"Alerts ", curses.color_pair(12))
+    stdscr.addstr(h-1, (len("F1Alerts ")+1), f"F2", curses.color_pair(8))
+    stdscr.addstr(h-1, (len("F1Alerts F2")+1), f"Warnings ", curses.color_pair(13))
+    stdscr.addstr(h-1, (len("F1Alerts F2 Warings ")+1), f"F3", curses.color_pair(8))
+    stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3")+1), f"Ack ", curses.color_pair(10))
+    stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3Ack ")+1), f"F10", curses.color_pair(8))
+    stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3Ack F10")+1), f"Quit ", curses.color_pair(9))
+    # stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3Ack ")+1), f" " * (w - (len("F1Alerts F2 Warings F3Ack")) - 3), curses.color_pair(8))
 
 def draw_bars(stdscr, y, x, label, width, max_value, current_value):
     bar_length = int((current_value / max_value) * width)
@@ -13,9 +27,11 @@ def draw_bars(stdscr, y, x, label, width, max_value, current_value):
     stdscr.addstr(y, x+4, "|" * bar_length + "-" * (width - bar_length),curses.color_pair(3))
     stdscr.addstr(y, x+4+width, f"]", curses.color_pair(8))
 
+
 def draw_sensor(stdscr, y, x, label, value, vcolorpair):
     stdscr.addstr(y, x, f"{label}" + ": ", curses.color_pair(7))
     stdscr.addstr(y, x + (len(label)+2), f"{value}", curses.color_pair(int(vcolorpair)) | curses.A_BOLD)
+
 
 def draw_processes(stdscr, y, x, num_processes):
     stdscr.addstr(y, x, "PID   USER     PRI  NI  VIRT   RES   SHR S %CPU %MEM   TIME+  COMMAND", curses.color_pair(9))

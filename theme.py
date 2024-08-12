@@ -19,3 +19,6 @@ def theme_set_colours():
     curses.init_pair(9, curses.COLOR_BLACK, curses.COLOR_GREEN);
     curses.init_pair(10, curses.COLOR_BLACK, curses.COLOR_BLUE);
     curses.init_pair(11, curses.COLOR_WHITE, curses.COLOR_GREEN);
+    curses.init_pair(12, curses.COLOR_WHITE, curses.COLOR_RED);
+    curses.init_pair(13, curses.COLOR_BLACK, curses.COLOR_YELLOW);
+    curses.init_pair(14, curses.COLOR_BLACK, curses.COLOR_WHITE);
