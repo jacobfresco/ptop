@@ -21,7 +21,6 @@ def main(stdscr):
         draw_bars(stdscr, 4, 3, "Mem", 32, 16000, random.randint(0, 16000))
         draw_bars(stdscr, 5, 3, "Swp", 32, 8000, random.randint(0, 8000))
 
-
         draw_sensor(stdscr, 3, 50, "Alerts", "6", 3)
        
 

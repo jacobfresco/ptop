@@ -3,11 +3,14 @@
         "prtg_host": "yourserverurl",
         "prtg_port": "443",
         "api_user": "yourprtgapiuser",
-        "api_password": "passwordforapiuser"
+        "api_password": "passwordforapiuser",
+        "fetch_url": ""
     },
 
-    "layout": {
-
+    "prtg_status": {
+        "alert": "5",
+        "warning": "4",
+        "ack": "13"
     }
     
 }
