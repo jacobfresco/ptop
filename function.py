@@ -5,6 +5,39 @@ import requests
 
 from theme import *
 
+def read_settings(settings_file):
+    try:
+        # Open and read the settings file
+        with open(settings_file, 'r') as file:
+            settings = json.load(file)
+            return settings
+
+    except FileNotFoundError:
+        print(f"Error: The file {settings_file} was not found.")
+        return None
+
+    except json.JSONDecodeError:
+        print(f"Error: The file {settings_file} contains invalid JSON.")
+        return None
+
+# Load settings
+settings = load_settings(settings_file)
+
+if settings:
+    # Accessing individual settings
+    server = settings.get("server", {})
+    status = settings.get("status", {})
+    ptop_mode = settings.get("ptop_mode", {})
+    
+    # Use the settings in your application
+    if debug_mode:
+        print("Debug mode is enabled.")
+    else:
+        print("Debug mode is disabled.")
+
+else:
+    print("Failed to load settings.")
+
 def fetch_json(url, output_file):
     try:
         response = requests.get(url)
