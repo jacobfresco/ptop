@@ -4,6 +4,10 @@ import random
 
 from theme import *
 
+def check_filedir(dir):
+    # Check if the configured directory for the cached files exists. 
+    h, w = stdscr.getmaxyx()
+
 def draw_header(stdscr, y, x, label, width):
     stdscr.addstr(y, x, " " + f"{label}" + " " * ((width - len(label))-2), curses.color_pair(11))
 
@@ -18,7 +22,7 @@ def draw_footer(stdscr):
     stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3")+1), f"Ack ", curses.color_pair(10))
     stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3Ack ")+1), f"F10", curses.color_pair(8))
     stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3Ack F10")+1), f"Quit ", curses.color_pair(9))
-    # stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3Ack ")+1), f" " * (w - (len("F1Alerts F2 Warings F3Ack")) - 3), curses.color_pair(8))
+    
 
 def draw_bars(stdscr, y, x, label, width, max_value, current_value):
     bar_length = int((current_value / max_value) * width)

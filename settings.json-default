@@ -11,6 +11,14 @@
         "alert": "5",
         "warning": "4",
         "ack": "13"
+    },
+
+    "ptop_mode": {
+        "mode": "cached",
+        "file_dir": "~/.cache/ptop/",
+        "alert_file": "alerts.json",
+        "warnings_file": "warnings.json",
+        "ack_file": "ack.json"
     }
     
 }
