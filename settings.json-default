@@ -4,7 +4,7 @@
         "prtg_port": "443",
         "api_user": "yourprtgapiuser",
         "api_password": "passwordforapiuser",
-        "fetch_url": ""
+        "fetch_url": "/api/table.json?username=$user&password=$pwd&content=sensors&output=json&filter_status=$status_code&columns=tags%2Cobjid%2Cprobe%2Cdevice%2Csensor%2Clastup%2Cmessage%2Cstatus"
     },
 
     "prtg_status": {
