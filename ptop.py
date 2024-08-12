@@ -2,6 +2,7 @@ import curses
 import time
 import random
 import requests
+import json
 
 from function import *
 from theme import *
