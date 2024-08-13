@@ -17,10 +17,10 @@ global alert_file
 global warning_file
 global ack_file
 
-read_settings("settings.json")
-check_filedir("~/.cache/ptop/")
+settings = read_settings("settings.json")
+check_filedir(settings['ptop_mode']['0']['file_dir'])
 
-def main(stdscr):
+def main(stdscr)
     curses.curs_set(0)  # Hide the cursor
     stdscr.nodelay(1)   # Don't block waiting for user input
     stdscr.timeout(500) # Refresh every 500 ms

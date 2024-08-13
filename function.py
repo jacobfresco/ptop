@@ -11,8 +11,8 @@ def read_settings(settings_file):
     try:
         # Open and read the settings file
         with open(settings_file, 'r') as file:
-            settings = json.load(file)
-            return settings
+            ptop_settings = json.load(file)
+            return ptop_settings
 
     except FileNotFoundError:
         print(f"Error: The file {settings_file} was not found.")
@@ -22,34 +22,10 @@ def read_settings(settings_file):
         print(f"Error: The file {settings_file} contains invalid JSON.")
         return None
 
-    # Load settings
-    settings = load_settings(settings_file)
-
-    if settings:
-        # Accessing individual settings
-        server = settings.get("server", {})
-        status = settings.get("status", {})
-        ptop_mode = settings.get("ptop_mode", {})
-
-        prtg_url = {server.get('prtg_host')} + ":" + {server.get('prtg_port')} + {server.get('fetch_url')}
-        prtg_url = prtg_url.replace("$user", {server.get('api_user')})
-        prtg_url = prtg_url.replace("$pwd", {server.get('api_password')})
-
-        file_dir = {ptop_mode.get('file_dir')}
-        alert_file = {ptop_mode.get('alert_file')}
-        warning_file = {ptop_mode.get('warnings_file')}
-        ack_file = {ptop_mode.get('ack_file')}
-
-
-        
-        # Use the settings in your application
-        if debug_mode:
-            print("Debug mode is enabled.")
-        else:
-            print("Debug mode is disabled.")
-
     else:
         print("Failed to load settings.")
+
+
 
 def fetch_json(url, output_file):
     try:
@@ -72,6 +48,7 @@ def fetch_json(url, output_file):
         print("Error decoding JSON response")
 
 
+
 def check_filedir(directory_path):
     if os.path.exists(directory_path):
         print(f"The directory '{directory_path}' already exists.")
@@ -88,6 +65,7 @@ def check_filedir(directory_path):
         else:
             print("Directory was not created.")
             quit()
+
 
 def draw_header(stdscr, y, x, label, width):
     stdscr.addstr(y, x, " " + f"{label}" + " " * ((width - len(label))-2), curses.color_pair(11))
