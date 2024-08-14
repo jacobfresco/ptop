@@ -7,19 +7,20 @@ import os
 
 from theme import *
 
-def read_settings(settings_file):
+        
+def read_json(json_file):
     try:
         # Open and read the settings file
-        with open(settings_file, 'r') as file:
-            ptop_settings = json.load(file)
-            return ptop_settings
+        with open(json_file, 'r') as file:
+            prtg_data = json.load(file)
+            return prtg_data
 
     except FileNotFoundError:
-        print(f"Error: The file {settings_file} was not found.")
+        print(f"Error: The file {json_file} was not found.")
         return None
 
     except json.JSONDecodeError:
-        print(f"Error: The file {settings_file} contains invalid JSON.")
+        print(f"Error: The file {json_file} contains invalid JSON.")
         return None
 
     else:
@@ -68,7 +69,7 @@ def check_filedir(directory_path):
 
 
 def draw_header(stdscr, y, x, label, width):
-    stdscr.addstr(y, x, " " + f"{label}" + " " * ((width - len(label))-2), curses.color_pair(11))
+    stdscr.addstr(y, x, " " + f"{label}" + " " * ((width - len(label))-2), curses.color_pair(9))
 
 def draw_footer(stdscr):
     h, w = stdscr.getmaxyx()
