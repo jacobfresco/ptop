@@ -2,6 +2,8 @@ import curses
 import time
 import random
 
+# Define the color scheme used
+
 def theme_set_colours():
     curses.start_color() # Use colours
     curses.use_default_colors() # Use default terminal colors
