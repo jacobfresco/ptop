@@ -18,9 +18,9 @@ global warning_file
 global ack_file
 
 settings = read_settings("settings.json")
-check_filedir(settings['ptop_mode']['0']['file_dir'])
+check_filedir(settings['ptop_mode']['file_dir'])
 
-def main(stdscr)
+def main(stdscr):
     curses.curs_set(0)  # Hide the cursor
     stdscr.nodelay(1)   # Don't block waiting for user input
     stdscr.timeout(500) # Refresh every 500 ms
@@ -40,11 +40,11 @@ def main(stdscr)
        
 
         # Draw Process List Header
-        draw_processes(stdscr, 7, 1, 30)
+        draw_processes(stdscr, 7, 1, 10)
 
         # Handle exit key (q)
         key = stdscr.getch()
-        if key == ord('q'):
+        if key == ord('^[[21~'):
             break
 
         stdscr.refresh()

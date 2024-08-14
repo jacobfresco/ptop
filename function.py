@@ -51,7 +51,7 @@ def fetch_json(url, output_file):
 
 def check_filedir(directory_path):
     if os.path.exists(directory_path):
-        print(f"The directory '{directory_path}' already exists.")
+        print(f"Checking for '{directory_path}'. Already exists.")
     else:
         print(f"The directory '{directory_path}' does not exist.")
         # Ask the user if they want to create the directory
@@ -110,4 +110,4 @@ def draw_processes(stdscr, y, x, num_processes):
         mem = round(random.uniform(0, 10), 1)
         time_plus = f"{random.randint(0, 99)}:{random.randint(0, 59):02d}.{random.randint(0, 99):02d}"
         command = f"command_{i+1}"
-        #stdscr.addstr(y + i + 1, x, f"{pid:<6}{user:<9}{priority:<4}{nice:<4}{virt:<7}{res:<6}{shr:<5}S {cpu:<5}{mem:<5}{time_plus:<8}{command:<10}")
+        stdscr.addstr(y + i + 1, x, f"{pid:<6}{user:<9}{priority:<4}{nice:<4}{virt:<7}{res:<6}{shr:<5}S {cpu:<5}{mem:<5}{time_plus:<8}{command:<10}")
