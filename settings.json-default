@@ -18,7 +18,9 @@
         "file_dir": "~/.cache/ptop/",
         "alert_file": "alerts.json",
         "warnings_file": "warnings.json",
-        "ack_file": "ack.json"
+        "ack_file": "ack.json",
+        "probe_file": "probe.json",
+        "probe_id": "1003"
     }
     
 }
