@@ -71,6 +71,7 @@ def check_filedir(directory_path):
 def draw_header(stdscr, y, x, label, width):
     stdscr.addstr(y, x, " " + f"{label}" + " " * ((width - len(label))-2), curses.color_pair(9))
 
+
 def draw_footer(stdscr):
     h, w = stdscr.getmaxyx()
    
@@ -82,7 +83,7 @@ def draw_footer(stdscr):
     stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3")+1), f"Ack ", curses.color_pair(10))
     stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3Ack ")+1), f"F10", curses.color_pair(8))
     stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3Ack F10")+1), f"Quit ", curses.color_pair(9))
-    
+
 
 def draw_bars(stdscr, y, x, label, width, max_value, current_value):
     bar_length = int((current_value / max_value) * width)
@@ -95,6 +96,13 @@ def draw_bars(stdscr, y, x, label, width, max_value, current_value):
 def draw_sensor(stdscr, y, x, label, value, vcolorpair):
     stdscr.addstr(y, x, f"{label}" + ": ", curses.color_pair(7))
     stdscr.addstr(y, x + (len(label)+2), f"{value}", curses.color_pair(int(vcolorpair)) | curses.A_BOLD)
+
+
+def draw_value(stdscr, y, x, value, vcolorpair):
+    stdscr.addstr(y, x, f"{value}", curses.color_pair(int(vcolorpair)) | curses.A_BOLD)
+
+
+def draw_line(stdscr, y, x, value, vcolorpair):
 
 
 def draw_processes(stdscr, y, x, num_processes):

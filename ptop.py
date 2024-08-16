@@ -33,17 +33,22 @@ def main(stdscr):
         draw_footer(stdscr)
 
         alerts = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['alert_file'])
+        warnings = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['warnings_file'])
         probe = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['probe_file'])
         
-        uptime = probe['sensordata']['uptime'][:-1]
-        draw_bars(stdscr, 3, 3, "Up", 32, 100, int(uptime))
+        uptime = probe['sensordata']['uptime'][:-1].split(',')
+        draw_bars(stdscr, 3, 3, "Up", 32, 100, int(uptime[0]))
+        draw_value(stdscr, 3, 41, uptime[0] + "%", 3)
         draw_bars(stdscr, 4, 3, "Mem", 32, 16000, random.randint(0, 16000))
         draw_bars(stdscr, 5, 3, "Swp", 32, 8000, random.randint(0, 8000))
         
-        draw_sensor(stdscr, 3, 50, "PRTG Version", alerts['prtg-version'], 3)
-        draw_sensor(stdscr, 4, 50, "Alerts", alerts['treesize'], 3)
+        draw_sensor(stdscr, 3, 50, "Name", probe['sensordata']['parentdevicename'], 3)
+        draw_sensor(stdscr, 4, 50, "PRTG Version", alerts['prtg-version'], 3)
+        draw_sensor(stdscr, 5, 50, "Alerts", alerts['treesize'], 3)
 
-        draw_processes(stdscr, 7, 1, 10)
+        for i in alerts['sensors']:
+            
+            draw_processes(stdscr, 7, 1, 10)
 
         key = stdscr.getch()
         if key == ord('q'):
