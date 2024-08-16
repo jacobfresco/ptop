@@ -30,10 +30,11 @@ def main(stdscr):
         stdscr.clear()
         h, w = stdscr.getmaxyx()
         draw_header(stdscr, 1, 1, "ptop - Monitor PRTG from your terminal", w)
-        draw_footer(stdscr)
+       
 
         alerts = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['alert_file'])
         warnings = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['warnings_file'])
+        acks = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['ack_file'])
         probe = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['probe_file'])
         
         uptime = probe['sensordata']['uptime'][:-1].split(',')
@@ -44,11 +45,33 @@ def main(stdscr):
         
         draw_sensor(stdscr, 3, 50, "Name", probe['sensordata']['parentdevicename'], 3)
         draw_sensor(stdscr, 4, 50, "PRTG Version", alerts['prtg-version'], 3)
-        draw_sensor(stdscr, 5, 50, "Alerts", alerts['treesize'], 3)
+        draw_sensor(stdscr, 5, 50, "Uptime", probe['sensordata']['uptimetime'], 3)
 
-        for i in alerts['sensors']:
-            
-            draw_processes(stdscr, 7, 1, 10)
+        draw_line(stdscr, 7, 1, f"ID    DEVICE                MESSAGE ", w, 11)
+        
+        l = 8
+        
+        for i in range(int(alerts['treesize'])):
+            try:
+                draw_line(stdscr, l, 1, "", w, 12)
+                draw_value(stdscr, l, 1, alerts['sensors'][i]['objid'], 12)
+                draw_value(stdscr, l, 7, alerts['sensors'][i]['device_raw'][:21], 12)
+                draw_value(stdscr, l, 29, alerts['sensors'][i]['message_raw'][:(w-29)], 12)
+                l += 1
+            except curses.error:
+                pass
+
+        for i in range(int(warnings['treesize'])):
+            try:
+                draw_line(stdscr, l, 1, "", w, 8)
+                draw_value_nb(stdscr, l, 1, warnings['sensors'][i]['objid'], 8)
+                draw_value_nb(stdscr, l, 7, warnings['sensors'][i]['device_raw'][:21], 8)
+                draw_value_nb(stdscr, l, 29, warnings['sensors'][i]['message_raw'][:(w-29)], 8)
+                l += 1
+            except curses.error:
+                pass
+        
+        draw_footer(stdscr)
 
         key = stdscr.getch()
         if key == ord('q'):

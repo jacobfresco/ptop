@@ -102,7 +102,12 @@ def draw_value(stdscr, y, x, value, vcolorpair):
     stdscr.addstr(y, x, f"{value}", curses.color_pair(int(vcolorpair)) | curses.A_BOLD)
 
 
-def draw_line(stdscr, y, x, value, vcolorpair):
+def draw_value_nb(stdscr, y, x, value, vcolorpair):
+    stdscr.addstr(y, x, f"{value}", curses.color_pair(int(vcolorpair)))
+
+
+def draw_line(stdscr, y, x, label, width, vcolorpair):
+    stdscr.addstr(y, x, f"{label}" + " " * ((width - len(label))-1), curses.color_pair(int(vcolorpair)))
 
 
 def draw_processes(stdscr, y, x, num_processes):
