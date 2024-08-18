@@ -72,7 +72,7 @@ def main(stdscr):
                 pass
         
         # draw_footer(stdscr)
-        draw_footer2(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "]")
+        draw_footer2(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "] [Q - Quit]")
 
         key = stdscr.getch()
         if key == ord('q'):
@@ -80,6 +80,6 @@ def main(stdscr):
             break
 
         stdscr.refresh()
-        time.sleep(0.1)
+        time.sleep(1)
 
 curses.wrapper(main)

@@ -1,3 +1,4 @@
+
 import curses
 import time
 import random
@@ -76,7 +77,7 @@ def draw_footer2(stdscr, label):
     h, w = stdscr.getmaxyx()
 
     stdscr.addstr(h-1, 1, f"{label}", curses.color_pair(9))
-    print
+    print(" "*(w-len(label)-1), curses.color_pair(9))
 
 def draw_footer(stdscr):
     h, w = stdscr.getmaxyx()
