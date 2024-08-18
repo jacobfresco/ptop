@@ -71,7 +71,8 @@ def main(stdscr):
             except curses.error:
                 pass
         
-        draw_footer(stdscr)
+        # draw_footer(stdscr)
+        draw_footer2(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "]")
 
         key = stdscr.getch()
         if key == ord('q'):
