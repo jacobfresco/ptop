@@ -1,60 +1,24 @@
 {
     "prtg-version": "24.3.98.1210",
-    "treesize": 3,
+    "treesize": 1,
     "sensors": [
-      {
-        "tags": "probehealthsensor",
-        "tags_raw": "probehealthsensor",
-        "objid": 50982,
-        "objid_raw": 50982,
-        "probe": "WIZZ-MNT01",
-        "probe_raw": "WIZZ-MNT01",
-        "device": "Probe Device",
-        "device_raw": "Probe Device",
-        "sensor": "Probe Health",
-        "sensor_raw": "Probe Health",
-        "lastup": "13.08.2024 13:39:07 <span class=\"percent\">[1 h 20 m ago]</span>",
-        "lastup_raw": 45517.4854980671,
-        "message": "<div class=\"status\">Probe disconnected (Disconnected)<div class=\"moreicon\"></div></div>",
-        "message_raw": "Probe disconnected (Disconnected)",
-        "status": "Down",
-        "status_raw": 5
-      },
-      {
-        "tags": "snmpsynology synology physicaldisk",
-        "tags_raw": "snmpsynology synology physicaldisk",
-        "objid": 41576,
-        "objid_raw": 41576,
-        "probe": "Visumpro",
-        "probe_raw": "Visumpro",
-        "device": "visumnas01 - Synology",
-        "device_raw": "visumnas01 - Synology",
-        "sensor": "Physical Disk: Drive 1",
-        "sensor_raw": "Physical Disk: Drive 1",
-        "lastup": "09.08.2024 13:55:22 <span class=\"percent\">[4 d 1 h 4 m ago]</span>",
-        "lastup_raw": 45513.4967824537,
-        "message": "<div class=\"status\">The disk with the distinguished name &quot;Drive 1&quot; could not be found. (code: PE155)<div class=\"moreicon\"></div></div>",
-        "message_raw": "The disk with the distinguished name \"Drive 1\" could not be found. (code: PE155)",
-        "status": "Down",
-        "status_raw": 5
-      },
-      {
-        "tags": "snmpsynology synology physicaldisk",
-        "tags_raw": "snmpsynology synology physicaldisk",
-        "objid": 41577,
-        "objid_raw": 41577,
-        "probe": "Visumpro",
-        "probe_raw": "Visumpro",
-        "device": "visumnas01 - Synology",
-        "device_raw": "visumnas01 - Synology",
-        "sensor": "Physical Disk: Drive 2",
-        "sensor_raw": "Physical Disk: Drive 2",
-        "lastup": "09.08.2024 13:55:26 <span class=\"percent\">[4 d 1 h 4 m ago]</span>",
-        "lastup_raw": 45513.4968401852,
-        "message": "<div class=\"status\">The disk with the distinguished name &quot;Drive 2&quot; could not be found. (code: PE155)<div class=\"moreicon\"></div></div>",
-        "message_raw": "The disk with the distinguished name \"Drive 2\" could not be found. (code: PE155)",
-        "status": "Down",
-        "status_raw": 5
-      }
+        {
+            "tags": "pingsensor",
+            "tags_raw": "pingsensor",
+            "objid": 49930,
+            "objid_raw": 49930,
+            "probe": "de Paddestoel",
+            "probe_raw": "de Paddestoel",
+            "device": "Wifi - Anthuriumsingel",
+            "device_raw": "Wifi - Anthuriumsingel",
+            "sensor": "Ping 311",
+            "sensor_raw": "Ping 311",
+            "lastup": "19.08.2024 16:06:24 <span class=\"percent\">[1 h 48 m ago]</span>",
+            "lastup_raw": 45523.587780463,
+            "message": "<div class=\"status\">Request timed out (ICMP error # 11010)<div class=\"moreicon\"></div></div>",
+            "message_raw": "Request timed out (ICMP error # 11010)",
+            "status": "Down",
+            "status_raw": 5
+        }
     ]
-  }
+}
