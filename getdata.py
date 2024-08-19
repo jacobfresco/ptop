@@ -30,3 +30,4 @@ fetch_json(warning_url, settings['ptop_mode']['file_dir'] + settings['ptop_mode'
 fetch_json(ack_url, settings['ptop_mode']['file_dir'] + settings['ptop_mode']['ack_file'])
 fetch_json(probe_url, settings['ptop_mode']['file_dir'] + settings['ptop_mode']['probe_file'])
 
+# End of script
