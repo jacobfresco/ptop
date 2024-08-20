@@ -40,7 +40,7 @@ def main(stdscr):
         uptime = probe['sensordata']['uptime'][:-1].split(',')
         draw_bars(stdscr, 3, 3, "Up", 32, 100, int(uptime[0]))
         draw_value(stdscr, 3, 41, uptime[0] + "%", 3)
-        draw_bars(stdscr, 4, 3, "Mem", 32, 16000, random.randint(0, 16000))
+        draw_bars(stdscr, 4, 3, "Int", 32, 100, int(probe['sensordata']['interval']))
         draw_bars(stdscr, 5, 3, "Swp", 32, 8000, random.randint(0, 8000))
         
         draw_sensor(stdscr, 3, 50, "Name", probe['sensordata']['parentdevicename'], 3)
