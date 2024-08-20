@@ -81,11 +81,11 @@ def main(stdscr):
         if settings['ptop_mode']['show_acks'] == "true":
             for i in range(int(acks['treesize'])):
                 try:
-                    draw_line(stdscr, l, 1, "", w, 2)
-                    draw_value_nb(stdscr, l, 1, "a", 2)
-                    draw_value_nb(stdscr, l, 3, acks['sensors'][i]['objid'], 2)
-                    draw_value_nb(stdscr, l, 9, acks['sensors'][i]['device_raw'][:21], 2)
-                    draw_value_nb(stdscr, l, 31, acks['sensors'][i]['message_raw'][:(w-31)], 2)
+                    draw_line(stdscr, l, 1, "", w, 7)
+                    draw_value_nb(stdscr, l, 1, "a", 7)
+                    draw_value_nb(stdscr, l, 3, acks['sensors'][i]['objid'], 7)
+                    draw_value_nb(stdscr, l, 9, acks['sensors'][i]['device_raw'][:21], 7)
+                    draw_value_nb(stdscr, l, 31, acks['sensors'][i]['message_raw'][:(w-31)], 7)
                     l += 1
                 except curses.error:
                     pass
