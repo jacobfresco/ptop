@@ -31,28 +31,30 @@ def main(stdscr):
         h, w = stdscr.getmaxyx()
         draw_header(stdscr, 1, 1, "ptop - Monitor PRTG from your terminal", w)
        
-
         alerts = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['alert_file'])
         warnings = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['warnings_file'])
         acks = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['ack_file'])
         probe = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['probe_file'])
         
-        uptime = probe['sensordata']['uptime'][:-1].split(',')
-        downtime = probe['sensordata']['downtime'][:-1].split(',')
+        try:
+            uptime = probe['sensordata']['uptime'][:-1].split(',')
+            downtime = probe['sensordata']['downtime'][:-1].split(',')
 
-        draw_bars(stdscr, 3, 3, "Up", 32, 100, int(uptime[0]))
-        draw_value(stdscr, 3, 41, uptime[0] + "%", 3)
-        draw_bars(stdscr, 4, 3, "Int", 32, 100, int(probe['sensordata']['interval']))
-        draw_value(stdscr, 4, 41, probe['sensordata']['interval'] + "s", 3)
-        draw_bars(stdscr, 5, 3, "Dwn", 32, 100, int(downtime[0]))
-        draw_value(stdscr, 5, 41, downtime[0] + "%", 3)
-        
-        draw_sensor(stdscr, 3, 50, "Name", probe['sensordata']['parentdevicename'] , 3)
-        draw_sensor(stdscr, 4, 50, "PRTG Version", alerts['prtg-version'], 3)
-        draw_sensor(stdscr, 5, 50, "Uptime", probe['sensordata']['uptimetime'], 3)
+            draw_bars(stdscr, 3, 3, "Up", 32, 100, int(uptime[0]))
+            draw_value(stdscr, 3, 41, uptime[0] + "%", 3)
+            draw_bars(stdscr, 4, 3, "Int", 32, 100, int(probe['sensordata']['interval']))
+            draw_value(stdscr, 4, 41, probe['sensordata']['interval'] + "s", 3)
+            draw_bars(stdscr, 5, 3, "Dwn", 32, 100, int(downtime[0]))
+            draw_value(stdscr, 5, 41, downtime[0] + "%", 3)
+            
+            draw_sensor(stdscr, 3, 50, "Name", probe['sensordata']['parentdevicename'] , 3)
+            draw_sensor(stdscr, 4, 50, "PRTG Version", alerts['prtg-version'], 3)
+            draw_sensor(stdscr, 5, 50, "Uptime", probe['sensordata']['uptimetime'], 3)
 
-        draw_line(stdscr, 7, 1, f"* ID    DEVICE                MESSAGE ", w, 11)
-        
+            draw_line(stdscr, 7, 1, f"* ID    DEVICE                MESSAGE ", w, 11)
+        except curses.error:
+            pass
+
         l = 8
         
         for i in range(int(alerts['treesize'])):
