@@ -20,6 +20,9 @@ global ack_file
 settings = read_json("settings.json")
 check_filedir(settings['ptop_mode']['file_dir'])
 
+if settings['ptop_mode']['debug'] == "true":
+    import logging
+    
 def main(stdscr):
     curses.curs_set(0)  
     stdscr.nodelay(1)   
@@ -53,6 +56,9 @@ def main(stdscr):
 
             draw_line(stdscr, 7, 1, f"* ID    DEVICE                MESSAGE ", w, 11)
         except curses.error:
+            if settings['ptop_mode']['debug'] == "true":
+                # Use logging
+                
             pass
 
         l = 8

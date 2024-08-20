@@ -6,7 +6,6 @@ import json
 import os
 
 from theme import *
-
         
 def read_json(json_file):
     try:
@@ -72,9 +71,7 @@ def draw_header(stdscr, y, x, label, width):
 
 
 def draw_footer(stdscr, label):
-
     h, w = stdscr.getmaxyx()
-
     stdscr.insstr(h-1, 1, f"{label}" + " "*(w-len(label)-1), curses.color_pair(11) | curses.A_BOLD)
 
 
