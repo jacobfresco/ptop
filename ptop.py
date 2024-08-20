@@ -47,7 +47,7 @@ def main(stdscr):
         draw_bars(stdscr, 5, 3, "Dwn", 32, 100, int(downtime[0]))
         draw_value(stdscr, 5, 41, downtime[0] + "%", 3)
         
-        draw_sensor(stdscr, 3, 50, "Name", probe['sensordata']['parentdevicename'], 3)
+        draw_sensor(stdscr, 3, 50, "Name", probe['sensordata']['parentdevicename'] , 3)
         draw_sensor(stdscr, 4, 50, "PRTG Version", alerts['prtg-version'], 3)
         draw_sensor(stdscr, 5, 50, "Uptime", probe['sensordata']['uptimetime'], 3)
 
@@ -66,17 +66,30 @@ def main(stdscr):
             except curses.error:
                 pass
 
-        for i in range(int(warnings['treesize'])):
-            try:
-                draw_line(stdscr, l, 1, "", w, 8)
-                draw_value_nb(stdscr, l, 1, "W", 8)
-                draw_value_nb(stdscr, l, 3, warnings['sensors'][i]['objid'], 8)
-                draw_value_nb(stdscr, l, 9, warnings['sensors'][i]['device_raw'][:21], 8)
-                draw_value_nb(stdscr, l, 31, warnings['sensors'][i]['message_raw'][:(w-31)], 8)
-                l += 1
-            except curses.error:
-                pass
-        
+        if settings['ptop_mode']['show_warnings'] == "true":
+            for i in range(int(warnings['treesize'])):
+                try:
+                    draw_line(stdscr, l, 1, "", w, 8)
+                    draw_value_nb(stdscr, l, 1, "W", 8)
+                    draw_value_nb(stdscr, l, 3, warnings['sensors'][i]['objid'], 8)
+                    draw_value_nb(stdscr, l, 9, warnings['sensors'][i]['device_raw'][:21], 8)
+                    draw_value_nb(stdscr, l, 31, warnings['sensors'][i]['message_raw'][:(w-31)], 8)
+                    l += 1
+                except curses.error:
+                    pass
+            
+        if settings['ptop_mode']['show_acks'] == "true":
+            for i in range(int(acks['treesize'])):
+                try:
+                    draw_line(stdscr, l, 1, "", w, 8)
+                    draw_value_nb(stdscr, l, 1, "a", 8)
+                    draw_value_nb(stdscr, l, 3, acks['sensors'][i]['objid'], 8)
+                    draw_value_nb(stdscr, l, 9, acks['sensors'][i]['device_raw'][:21], 8)
+                    draw_value_nb(stdscr, l, 31, acks['sensors'][i]['message_raw'][:(w-31)], 8)
+                    l += 1
+                except curses.error:
+                    pass
+                
         # draw_footer(stdscr)
         draw_footer2(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "] [Q - Quit]")
 

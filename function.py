@@ -75,8 +75,8 @@ def draw_footer2(stdscr, label):
 
     h, w = stdscr.getmaxyx()
 
-    stdscr.addstr(h-1, 1, f"{label}", curses.color_pair(9))
-    print(" "*(w-len(label)-1), curses.color_pair(9))
+    stdscr.insstr(h-1, 1, f"{label}" + " "*(w-len(label)-1), curses.color_pair(11) | curses.A_BOLD)
+    # print(" "*(w-len(label)-1), curses.color_pair(9))
 
 
 def draw_footer(stdscr):

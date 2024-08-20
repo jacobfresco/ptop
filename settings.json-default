@@ -21,7 +21,9 @@
         "alert_file": "alerts.json",
         "warnings_file": "warnings.json",
         "ack_file": "ack.json",
-        "probe_file": "probe.json"
+        "probe_file": "probe.json",
+        "show_warnings": "true",
+        "show_acks": "true"
     }
     
 }
