@@ -23,7 +23,8 @@
         "ack_file": "ack.json",
         "probe_file": "probe.json",
         "show_warnings": "true",
-        "show_acks": "true"
+        "show_acks": "true",
+        "debug": "true",
     }
     
 }
