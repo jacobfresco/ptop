@@ -51,16 +51,17 @@ def main(stdscr):
         draw_sensor(stdscr, 4, 50, "PRTG Version", alerts['prtg-version'], 3)
         draw_sensor(stdscr, 5, 50, "Uptime", probe['sensordata']['uptimetime'], 3)
 
-        draw_line(stdscr, 7, 1, f"ID    DEVICE                MESSAGE ", w, 11)
+        draw_line(stdscr, 7, 1, f"* ID    DEVICE                MESSAGE ", w, 11)
         
         l = 8
         
         for i in range(int(alerts['treesize'])):
             try:
                 draw_line(stdscr, l, 1, "", w, 12)
-                draw_value(stdscr, l, 1, alerts['sensors'][i]['objid'], 12)
-                draw_value(stdscr, l, 7, alerts['sensors'][i]['device_raw'][:21], 12)
-                draw_value(stdscr, l, 29, alerts['sensors'][i]['message_raw'][:(w-29)], 12)
+                draw_value(stdscr, l, 1, "A", 12)
+                draw_value(stdscr, l, 3, alerts['sensors'][i]['objid'], 12)
+                draw_value(stdscr, l, 9, alerts['sensors'][i]['device_raw'][:21], 12)
+                draw_value(stdscr, l, 31, alerts['sensors'][i]['message_raw'][:(w-31)], 12)
                 l += 1
             except curses.error:
                 pass
@@ -68,9 +69,10 @@ def main(stdscr):
         for i in range(int(warnings['treesize'])):
             try:
                 draw_line(stdscr, l, 1, "", w, 8)
-                draw_value_nb(stdscr, l, 1, warnings['sensors'][i]['objid'], 8)
-                draw_value_nb(stdscr, l, 7, warnings['sensors'][i]['device_raw'][:21], 8)
-                draw_value_nb(stdscr, l, 29, warnings['sensors'][i]['message_raw'][:(w-29)], 8)
+                draw_value_nb(stdscr, l, 1, "W", 8)
+                draw_value_nb(stdscr, l, 3, warnings['sensors'][i]['objid'], 8)
+                draw_value_nb(stdscr, l, 9, warnings['sensors'][i]['device_raw'][:21], 8)
+                draw_value_nb(stdscr, l, 31, warnings['sensors'][i]['message_raw'][:(w-31)], 8)
                 l += 1
             except curses.error:
                 pass
