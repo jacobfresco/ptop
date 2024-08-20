@@ -91,7 +91,7 @@ def main(stdscr):
                     pass
 
         # draw_footer(stdscr)
-        draw_footer2(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "] [Q - Quit]")
+        draw_footer(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "] [Q - Quit]")
 
         key = stdscr.getch()
         if key == ord('q'):

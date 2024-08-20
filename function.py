@@ -71,25 +71,11 @@ def draw_header(stdscr, y, x, label, width):
     stdscr.addstr(y, x, " " + f"{label}" + " " * ((width - len(label))-2), curses.color_pair(9))
 
 
-def draw_footer2(stdscr, label):
+def draw_footer(stdscr, label):
 
     h, w = stdscr.getmaxyx()
 
     stdscr.insstr(h-1, 1, f"{label}" + " "*(w-len(label)-1), curses.color_pair(11) | curses.A_BOLD)
-    # print(" "*(w-len(label)-1), curses.color_pair(9))
-
-
-def draw_footer(stdscr):
-    h, w = stdscr.getmaxyx()
-   
-    stdscr.addstr(h-1, 1, f"F1", curses.color_pair(8))
-    stdscr.addstr(h-1, 3, f"Alerts ", curses.color_pair(12))
-    stdscr.addstr(h-1, (len("F1Alerts ")+1), f"F2", curses.color_pair(8))
-    stdscr.addstr(h-1, (len("F1Alerts F2")+1), f"Warnings ", curses.color_pair(13))
-    stdscr.addstr(h-1, (len("F1Alerts F2 Warings ")+1), f"F3", curses.color_pair(8))
-    stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3")+1), f"Ack ", curses.color_pair(10))
-    stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3Ack ")+1), f"F10", curses.color_pair(8))
-    stdscr.addstr(h-1, (len("F1Alerts F2 Warings F3Ack F10")+1), f"Quit ", curses.color_pair(9))
 
 
 def draw_bars(stdscr, y, x, label, width, max_value, current_value):
