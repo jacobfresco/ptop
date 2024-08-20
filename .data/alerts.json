@@ -1,24 +1,5 @@
 {
     "prtg-version": "24.3.98.1210",
-    "treesize": 1,
-    "sensors": [
-        {
-            "tags": "pingsensor",
-            "tags_raw": "pingsensor",
-            "objid": 49930,
-            "objid_raw": 49930,
-            "probe": "de Paddestoel",
-            "probe_raw": "de Paddestoel",
-            "device": "Wifi - Anthuriumsingel",
-            "device_raw": "Wifi - Anthuriumsingel",
-            "sensor": "Ping 311",
-            "sensor_raw": "Ping 311",
-            "lastup": "19.08.2024 16:06:24 <span class=\"percent\">[1 h 48 m ago]</span>",
-            "lastup_raw": 45523.587780463,
-            "message": "<div class=\"status\">Request timed out (ICMP error # 11010)<div class=\"moreicon\"></div></div>",
-            "message_raw": "Request timed out (ICMP error # 11010)",
-            "status": "Down",
-            "status_raw": 5
-        }
-    ]
+    "treesize": 0,
+    "sensors": []
 }

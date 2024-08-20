@@ -49,7 +49,6 @@ def fetch_json(url, output_file):
         print("Error decoding JSON response")
 
 
-
 def check_filedir(directory_path):
     if os.path.exists(directory_path):
         print(f"Checking for '{directory_path}'. Already exists.")
@@ -71,12 +70,14 @@ def check_filedir(directory_path):
 def draw_header(stdscr, y, x, label, width):
     stdscr.addstr(y, x, " " + f"{label}" + " " * ((width - len(label))-2), curses.color_pair(9))
 
+
 def draw_footer2(stdscr, label):
 
     h, w = stdscr.getmaxyx()
 
     stdscr.addstr(h-1, 1, f"{label}", curses.color_pair(9))
     print(" "*(w-len(label)-1), curses.color_pair(9))
+
 
 def draw_footer(stdscr):
     h, w = stdscr.getmaxyx()
