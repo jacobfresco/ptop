@@ -38,11 +38,14 @@ def main(stdscr):
         probe = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['probe_file'])
         
         uptime = probe['sensordata']['uptime'][:-1].split(',')
+        downtime = probe['sensordata']['downtime'][:-1].split(',')
+
         draw_bars(stdscr, 3, 3, "Up", 32, 100, int(uptime[0]))
         draw_value(stdscr, 3, 41, uptime[0] + "%", 3)
         draw_bars(stdscr, 4, 3, "Int", 32, 100, int(probe['sensordata']['interval']))
         draw_value(stdscr, 4, 41, probe['sensordata']['interval'] + "s", 3)
-        draw_bars(stdscr, 5, 3, "Swp", 32, 8000, random.randint(0, 8000))
+        draw_bars(stdscr, 5, 3, "Dwn", 32, 100, int(downtime[0]))
+        draw_value(stdscr, 5, 41, downtime[0] + "%", 3)
         
         draw_sensor(stdscr, 3, 50, "Name", probe['sensordata']['parentdevicename'], 3)
         draw_sensor(stdscr, 4, 50, "PRTG Version", alerts['prtg-version'], 3)
