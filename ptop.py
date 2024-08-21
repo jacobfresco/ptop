@@ -63,6 +63,9 @@ def main(stdscr):
 
         l = 8
         
+        if alerts == "" or warnings == "" or acks == "" or probe == "":
+            break
+
         for i in range(int(alerts['treesize'])):
             try:
                 draw_line(stdscr, l, 1, "", w, 12)
@@ -74,6 +77,9 @@ def main(stdscr):
             except curses.error:
                 pass
 
+        if alerts == "" or warnings == "" or acks == "" or probe == "":
+            break
+        
         if settings['ptop_mode']['show_warnings'] == "true":
             for i in range(int(warnings['treesize'])):
                 try:
