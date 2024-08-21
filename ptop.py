@@ -39,7 +39,7 @@ def main(stdscr):
         acks = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['ack_file'])
         probe = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['probe_file'])
 
-        if alerts == "" | warnings == "" | acks == "" | probe == "":
+        if alerts == "" or warnings == "" or acks == "" or probe == "":
             break
         
         try:
