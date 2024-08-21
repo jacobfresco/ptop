@@ -38,6 +38,9 @@ def main(stdscr):
         warnings = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['warnings_file'])
         acks = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['ack_file'])
         probe = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['probe_file'])
+
+        if alerts == "" | warnings == "" | acks == "" | probe == "":
+            break
         
         try:
             uptime = probe['sensordata']['uptime'][:-1].split(',')
