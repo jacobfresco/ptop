@@ -55,10 +55,7 @@ def main(stdscr):
             draw_sensor(stdscr, 5, 50, "Uptime", probe['sensordata']['uptimetime'], 3)
 
             draw_line(stdscr, 7, 1, f"* ID    DEVICE                MESSAGE ", w, 11)
-        except curses.error:
-            if settings['ptop_mode']['debug'] == "true":
-                # Use logging
-                
+        except curses.error:                
             pass
 
         l = 8
@@ -98,8 +95,10 @@ def main(stdscr):
                 except curses.error:
                     pass
 
-        # draw_footer(stdscr)
-        draw_footer(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "] [Q - Quit]")
+        try:
+            draw_footer(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "] [Q - Quit]")
+        except:
+            pass
 
         key = stdscr.getch()
         if key == ord('q'):
