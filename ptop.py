@@ -48,8 +48,6 @@ def main(stdscr):
         acks = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['ack_file'])
         probe = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['probe_file'])
 
-        if alerts == "" or warnings == "" or acks == "" or probe == "":
-            break
         
         try:
             uptime = probe['sensordata']['uptime'][:-1].split(',')
@@ -85,9 +83,11 @@ def main(stdscr):
                 except curses.error as e:
                     logging.error("Error printing alerts: " + str(e))
                     pass
+                    
         except curses.error as e:
             logging.error("Error loading JSON: " + str(e))
             pass
+
         
         try:    
             if settings['ptop_mode']['show_warnings'] == "true":
@@ -105,6 +105,7 @@ def main(stdscr):
         except curses.error as e:
             logging.error("Error loading JSON: " + str(e))
             pass
+
 
         try:
             if settings['ptop_mode']['show_acks'] == "true":
