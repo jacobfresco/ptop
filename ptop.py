@@ -23,7 +23,7 @@ check_filedir(settings['ptop_mode']['file_dir'])
 if settings['ptop_mode']['debug'] == "true":
     import logging
     logging.basicConfig(
-        level=logging.ERROR,
+        # level=logging.ERROR,
         filename="ptop_debug.log",
         encoding="utf-8",
         filemode="a",
@@ -67,7 +67,8 @@ def main(stdscr):
             draw_sensor(stdscr, 5, 50, "Uptime", probe['sensordata']['uptimetime'], 3)
 
             draw_line(stdscr, 7, 1, f"* ID    DEVICE                MESSAGE ", w, 11)
-        except curses.error:                
+        except curses.error as e:
+            logging.error("Error printing probe information: " + str(e))                
             pass
 
         l = 8
@@ -83,7 +84,8 @@ def main(stdscr):
                 draw_value(stdscr, l, 9, alerts['sensors'][i]['device_raw'][:21], 12)
                 draw_value(stdscr, l, 31, alerts['sensors'][i]['message_raw'][:(w-31)], 12)
                 l += 1
-            except curses.error:
+            except curses.error as e:
+                logging.error("Error printing alerts: " + str(e))
                 pass
 
         if alerts == "" or warnings == "" or acks == "" or probe == "":
@@ -98,7 +100,8 @@ def main(stdscr):
                     draw_value_nb(stdscr, l, 9, warnings['sensors'][i]['device_raw'][:21], 4)
                     draw_value_nb(stdscr, l, 31, warnings['sensors'][i]['message_raw'][:(w-31)], 4)
                     l += 1
-                except curses.error:
+                except curses.error as e:
+                    logging.error("Error printing warnings: " + str(e))
                     pass
             
         if settings['ptop_mode']['show_acks'] == "true":
@@ -110,7 +113,8 @@ def main(stdscr):
                     draw_value_nb(stdscr, l, 9, acks['sensors'][i]['device_raw'][:21], 7)
                     draw_value_nb(stdscr, l, 31, acks['sensors'][i]['message_raw'][:(w-31)], 7)
                     l += 1
-                except curses.error:
+                except curses.error as e:
+                    logging.error("Error printing acks: " + str(e))
                     pass
 
         try:
