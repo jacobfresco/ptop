@@ -22,6 +22,15 @@ check_filedir(settings['ptop_mode']['file_dir'])
 
 if settings['ptop_mode']['debug'] == "true":
     import logging
+    logging.basicConfig(
+        level=logging.ERROR,
+        filename="ptop_debug.log",
+        encoding="utf-8",
+        filemode="a",
+        format="{asctime} - {levelname} - {message}",
+        style="{",
+        datefmt="%Y-%m-%d %H:%M",
+    )
     
 def main(stdscr):
     curses.curs_set(0)  
