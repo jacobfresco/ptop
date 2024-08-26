@@ -81,7 +81,7 @@ def main(stdscr):
                     draw_value(stdscr, l, 31, alerts['sensors'][i]['message_raw'][:(w-31)], 12)
                     l += 1
                 except curses.error as e:
-                    logging.error("Error printing alerts: " + str(e))
+                    # logging.error("Error printing alerts: " + str(e))
                     pass
                     
         except curses.error as e:
@@ -100,7 +100,7 @@ def main(stdscr):
                         draw_value_nb(stdscr, l, 31, warnings['sensors'][i]['message_raw'][:(w-31)], 4)
                         l += 1
                     except curses.error as e:
-                        logging.error("Error printing warnings: " + str(e))
+                        # logging.error("Error printing warnings: " + str(e))
                         pass
         except curses.error as e:
             logging.error("Error loading JSON: " + str(e))
@@ -118,7 +118,7 @@ def main(stdscr):
                         draw_value_nb(stdscr, l, 31, acks['sensors'][i]['message_raw'][:(w-31)], 7)
                         l += 1
                     except curses.error as e:
-                        logging.error("Error printing acks: " + str(e))
+                        # logging.error("Error printing acks: " + str(e))
                         pass
         except curses.error as e:
             logging.error("Error loading JSON: " + str(e))
