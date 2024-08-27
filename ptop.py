@@ -23,7 +23,7 @@ check_filedir(settings['ptop_mode']['file_dir'])
 if settings['ptop_mode']['debug'] == "true":
     import logging
     logging.basicConfig(
-        level=logging.error,
+        level="logging.error",
         filename="ptop_debug.log",
         encoding="utf-8",
         filemode="a",
