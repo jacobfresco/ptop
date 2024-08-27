@@ -23,7 +23,7 @@ check_filedir(settings['ptop_mode']['file_dir'])
 if settings['ptop_mode']['debug'] == "true":
     import logging
     logging.basicConfig(
-        # level=logging.ERROR,
+        level=logging.str(settings['ptop_mode']['debuglevel']),
         filename="ptop_debug.log",
         encoding="utf-8",
         filemode="a",
@@ -81,52 +81,61 @@ def main(stdscr):
                     draw_value(stdscr, l, 31, alerts['sensors'][i]['message_raw'][:(w-31)], 12)
                     l += 1
                 except curses.error as e:
-                    # logging.error("Error printing alerts: " + str(e))
+                    logging.debug("Error printing alerts: " + str(e))
                     pass
                     
-        except curses.error as e:
-            logging.error("Error loading JSON: " + str(e))
+        except AttributeError as e:
+            logging.error("Empty JSON: " + str(e))
             pass
 
         
         try:    
             if settings['ptop_mode']['show_warnings'] == "true":
-                for i in range(int(warnings['treesize'])):
-                    try:
-                        draw_line(stdscr, l, 1, "", w, 4)
-                        draw_value_nb(stdscr, l, 1, "W", 4)
-                        draw_value_nb(stdscr, l, 3, warnings['sensors'][i]['objid'], 4)
-                        draw_value_nb(stdscr, l, 9, warnings['sensors'][i]['device_raw'][:21], 4)
-                        draw_value_nb(stdscr, l, 31, warnings['sensors'][i]['message_raw'][:(w-31)], 4)
-                        l += 1
-                    except curses.error as e:
-                        # logging.error("Error printing warnings: " + str(e))
-                        pass
-        except curses.error as e:
-            logging.error("Error loading JSON: " + str(e))
+                try:
+                    for i in range(int(warnings['treesize'])):
+                        try:
+                            draw_line(stdscr, l, 1, "", w, 4)
+                            draw_value_nb(stdscr, l, 1, "W", 4)
+                            draw_value_nb(stdscr, l, 3, warnings['sensors'][i]['objid'], 4)
+                            draw_value_nb(stdscr, l, 9, warnings['sensors'][i]['device_raw'][:21], 4)
+                            draw_value_nb(stdscr, l, 31, warnings['sensors'][i]['message_raw'][:(w-31)], 4)
+                            l += 1
+                        except curses.error as e:
+                            logging.debug("Error printing warnings: " + str(e))
+                            pass
+
+                except AttributeError as e:
+                    logging.error("Empty JSON: " + str(e))        
+        except:
+            logging.error("Error: " + str(e))
             pass
 
 
         try:
             if settings['ptop_mode']['show_acks'] == "true":
-                for i in range(int(acks['treesize'])):
-                    try:
-                        draw_line(stdscr, l, 1, "", w, 7)
-                        draw_value_nb(stdscr, l, 1, "a", 7)
-                        draw_value_nb(stdscr, l, 3, acks['sensors'][i]['objid'], 7)
-                        draw_value_nb(stdscr, l, 9, acks['sensors'][i]['device_raw'][:21], 7)
-                        draw_value_nb(stdscr, l, 31, acks['sensors'][i]['message_raw'][:(w-31)], 7)
-                        l += 1
-                    except curses.error as e:
-                        # logging.error("Error printing acks: " + str(e))
-                        pass
+                try:
+                    for i in range(int(acks['treesize'])):
+                        try:
+                            draw_line(stdscr, l, 1, "", w, 7)
+                            draw_value_nb(stdscr, l, 1, "a", 7)
+                            draw_value_nb(stdscr, l, 3, acks['sensors'][i]['objid'], 7)
+                            draw_value_nb(stdscr, l, 9, acks['sensors'][i]['device_raw'][:21], 7)
+                            draw_value_nb(stdscr, l, 31, acks['sensors'][i]['message_raw'][:(w-31)], 7)
+                            l += 1
+                        except curses.error as e:
+                            logging.debug("Error printing acks: " + str(e))
+                            pass
+
+                except AttributeError as e:
+                    logging.error("Empty JSON: " + str(e)) 
         except curses.error as e:
-            logging.error("Error loading JSON: " + str(e))
+            logging.error("Error: " + str(e))
             pass
 
         try:
             draw_footer(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "] [Q - Quit]")
-        except:
+        except curses.error as e:
+            logging.error("Error printing footer: " + str(e))
             pass
 
         key = stdscr.getch()

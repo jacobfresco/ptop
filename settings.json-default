@@ -25,6 +25,7 @@
         "show_warnings": "true",
         "show_acks": "true",
         "debug": "true",
+        "debuglevel": "error"
     }
     
 }
