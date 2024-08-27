@@ -128,13 +128,13 @@ def main(stdscr):
 
                 except AttributeError as e:
                     logging.error("Empty JSON: " + str(e)) 
-        except except Exception as e:
+        except Exception as e:
             logging.error("Error: " + str(e))
             pass
 
         try:
             draw_footer(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "] [Q - Quit]")
-        except except Exception as e:
+        except Exception as e:
             logging.error("Error printing footer: " + str(e))
             pass
 
