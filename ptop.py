@@ -64,7 +64,7 @@ def main(stdscr):
             draw_sensor(stdscr, 4, 50, "PRTG Version", alerts['prtg-version'], 3)
             draw_sensor(stdscr, 5, 50, "Uptime", probe['sensordata']['uptimetime'], 3)
 
-            draw_line(stdscr, 7, 1, f"* ID    DEVICE                MESSAGE ", w, 11)
+            draw_line(stdscr, 7, 1, f"* ID    DEVICE                MESSAGE ", w, 9)
         except Exception as e:
             logging.error("Error printing probe information: " + str(e))                
             pass
