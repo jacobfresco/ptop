@@ -132,11 +132,12 @@ def main(stdscr):
             logging.error("Error: " + str(e))
             pass
 
-        try:
-            draw_footer(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "] [Q - Quit]")
-        except Exception as e:
-            logging.error("Error printing footer: " + str(e))
-            pass
+        if settings['ptop_mode']['show_footer'] == "true":
+            try:
+                draw_footer(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "] [Q - Quit]")
+            except Exception as e:
+                logging.error("Error printing footer: " + str(e))
+                pass
 
         key = stdscr.getch()
         if key == ord('q'):
