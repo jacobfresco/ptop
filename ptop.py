@@ -17,6 +17,7 @@ global alert_file
 global warning_file
 global ack_file
 
+# Lock into settings
 settings = read_json("settings.json")
 check_filedir(settings['ptop_mode']['file_dir'])
 
