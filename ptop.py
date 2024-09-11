@@ -85,7 +85,7 @@ def main(stdscr):
                     logging.debug("Error printing alerts: " + str(e))
                     pass
                     
-        except AttributeError as e:
+        except Exception as e:
             logging.error("Empty JSON: " + str(e))
             pass
 
@@ -127,7 +127,7 @@ def main(stdscr):
                             logging.debug("Error printing acks: " + str(e))
                             pass
 
-                except AttributeError as e:
+                except Exception as e:
                     logging.error("Empty JSON: " + str(e)) 
         except Exception as e:
             logging.error("Error: " + str(e))
