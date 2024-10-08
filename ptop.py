@@ -51,7 +51,7 @@ def main(stdscr):
         warnings = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['warnings_file'])
         acks = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['ack_file'])
         probe = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['probe_file'])
-
+        LoopIterations=1
         
         try:
             uptime = probe['sensordata']['uptime'][:-1].split(',')
@@ -137,7 +137,7 @@ def main(stdscr):
                 logging.error("Error: " + str(e))
                 pass
             LoopIterations += 1
-            
+
         if settings['ptop_mode']['show_footer'] == "true":
             try:
                 draw_footer(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Warnings " + str(warnings['treesize']) +"] [Ackknowleded " + str(acks['treesize']) + "] [Q - Quit]")
