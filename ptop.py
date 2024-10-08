@@ -47,10 +47,20 @@ def main(stdscr):
         h, w = stdscr.getmaxyx()
         draw_header(stdscr, 1, 1, "ptop - Monitor PRTG from your terminal", w)
        
-        alerts = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['alert_file'])
-        warnings = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['warnings_file'])
-        acks = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['ack_file'])
+        check_file(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['probe_file'], 70)
         probe = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['probe_file'])
+
+        check_file(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['alert_file'], 70)
+        alerts = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['alert_file'])
+
+        if settings['ptop_mode']['show_warnings'] == "true":
+            check_file(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['warnings_file'], 70)
+            warnings = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['warnings_file'])
+
+        if settings['ptop_mode']['show_acks'] == "true":    
+            check_file(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['ack_file'], 70)
+            acks = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['ack_file'])
+
         LoopIterations=1
         
         try:

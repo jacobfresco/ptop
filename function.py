@@ -48,6 +48,7 @@ def fetch_json(url, output_file):
         print("Error decoding JSON response")
 
 
+
 def check_filedir(directory_path):
     if os.path.exists(directory_path):
         print(f"Checking for '{directory_path}'. Already exists.")
@@ -66,13 +67,16 @@ def check_filedir(directory_path):
             quit()
 
 
+
 def draw_header(stdscr, y, x, label, width):
     stdscr.addstr(y, x, " " + f"{label}" + " " * ((width - len(label))-2), curses.color_pair(9))
+
 
 
 def draw_footer(stdscr, label):
     h, w = stdscr.getmaxyx()
     stdscr.insstr(h-1, 1, f"{label}" + " "*(w-len(label)-1), curses.color_pair(11) | curses.A_BOLD)
+
 
 
 def draw_bars(stdscr, y, x, label, width, max_value, current_value):
@@ -83,21 +87,26 @@ def draw_bars(stdscr, y, x, label, width, max_value, current_value):
     stdscr.addstr(y, x+4+width, f"]", curses.color_pair(8))
 
 
+
 def draw_sensor(stdscr, y, x, label, value, vcolorpair):
     stdscr.addstr(y, x, f"{label}" + ": ", curses.color_pair(7))
     stdscr.addstr(y, x + (len(label)+2), f"{value}", curses.color_pair(int(vcolorpair)) | curses.A_BOLD)
+
 
 
 def draw_value(stdscr, y, x, value, vcolorpair):
     stdscr.addstr(y, x, f"{value}", curses.color_pair(int(vcolorpair)) | curses.A_BOLD)
 
 
+
 def draw_value_nb(stdscr, y, x, value, vcolorpair):
     stdscr.addstr(y, x, f"{value}", curses.color_pair(int(vcolorpair)))
 
 
+
 def draw_line(stdscr, y, x, label, width, vcolorpair):
     stdscr.addstr(y, x, f"{label}" + " " * ((width - len(label))-1), curses.color_pair(int(vcolorpair)))
+
 
 
 def draw_processes(stdscr, y, x, num_processes):
@@ -115,3 +124,10 @@ def draw_processes(stdscr, y, x, num_processes):
         time_plus = f"{random.randint(0, 99)}:{random.randint(0, 59):02d}.{random.randint(0, 99):02d}"
         command = f"command_{i+1}"
         stdscr.addstr(y + i + 1, x, f"{pid:<6}{user:<9}{priority:<4}{nice:<4}{virt:<7}{res:<6}{shr:<5}S {cpu:<5}{mem:<5}{time_plus:<8}{command:<10}")
+
+
+
+def check_file(filetocheck, minsize):
+    if os.stat(filetocheck).st_size < minsize:
+        time.sleep(1)
+        
