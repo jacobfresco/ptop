@@ -144,7 +144,7 @@ def main(stdscr):
     key = stdscr.getch()
     if key == ord('q'):
         stdscr.clear()
-        break
+        # break
 
     stdscr.refresh()
     time.sleep(1)
