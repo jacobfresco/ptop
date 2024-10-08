@@ -56,10 +56,15 @@ def main(stdscr):
         if settings['ptop_mode']['show_warnings'] == "true":
             check_file(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['warnings_file'], 70)
             warnings = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['warnings_file'])
+        else:
+            warnings['treesize'] = "N/A"
+
 
         if settings['ptop_mode']['show_acks'] == "true":    
             check_file(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['ack_file'], 70)
             acks = read_json(settings['ptop_mode']['file_dir'] + settings['ptop_mode']['ack_file'])
+        else:
+            acks['treesize'] = "N/A"
 
         LoopIterations=1
         
