@@ -151,7 +151,16 @@ def main(stdscr):
 
         if settings['ptop_mode']['show_footer'] == "true":
             try:
-                draw_footer(stdscr, f"[Alerts " + str(alerts['treesize']) + "] [Q - Quit]")
+                footer = "[Alerts " + str(alerts['treesize']) + "]"
+                if settings['ptop_mode']['show_warnings'] == "true":
+                    footer += " [Warnings " + str(warnings['treesize']) + "]"
+
+                if settings['ptop_mode']['show_acks'] == "true":
+                    footer += " [Acknowledged " + str(acks['treesize']) + "]"
+
+                footer += " [Q - Quit]"
+
+                draw_footer(stdscr, footer)
             except Exception as e:
                 logging.error("Error printing footer: " + str(e))
                 pass
